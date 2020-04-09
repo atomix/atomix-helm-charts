@@ -27,8 +27,8 @@ cr upload \
     --package-path releases
 
 # Commit the releases
-echo "git add releases"
-echo "git commit -a -m \"Release $repo $tag\""
+git add releases
+git commit -a -m "Release $repo $tag"
 
 # Update the repository index
 cr index \
@@ -44,7 +44,7 @@ cr index \
 git checkout gh-pages
 mv build/index.yaml index.yaml
 
-echo "git commit -a -m \"Update index.yaml\""
-echo "git push origin gh-pages"
+git commit -a -m "Update index.yaml"
+git push origin gh-pages
 
 git checkout master
