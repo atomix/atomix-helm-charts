@@ -32,7 +32,7 @@ echo "git commit -a -m \"Release $repo $tag\""
 
 # Update the repository index
 cr index \
-  --index-path index.yaml \
+  --index-path build/index.yaml \
   --git-base-url https://api.github.com/ \
   --git-upload-url https://uploads.github.com/ \
   --owner atomix \
@@ -41,7 +41,8 @@ cr index \
   --package-path releases
 
 # Push the updated index.yaml to GitHub pages
-git add index.yaml && git checkout gh-pages
+git checkout gh-pages
+mv build/index.yaml index.yaml
 
 echo "git commit -a -m \"Update index.yaml\""
 echo "git push origin gh-pages"
