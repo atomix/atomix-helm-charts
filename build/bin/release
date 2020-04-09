@@ -5,23 +5,48 @@ rm -rf build/repos
 mkdir -p build/repos
 mkdir -p charts
 
-wd=$(pwd)
-
 git clone https://github.com/atomix/kubernetes-controller build/repos/kubernetes-controller && \
-    cd build/repos/kubernetes-controller && \
-    git checkout v0.2.0-beta.1 && \
-    cp -r deploy/helm $wd/charts/kubernetes-controller && \
-    cd $wd
+    git --git-dir=build/repos/kubernetes-controller/.git checkout v0.2.0-beta.1 && \
+    helm package build/repos/kubernetes-controller/deploy/helm --destination .deploy
 
-#git clone https://github.com/atomix/raft-storage build/repos/raft-storage && \
-#    cd build/repos/raft-storage && \
-#    git checkout master && \
-#    cp -r deploy/helm/cache-storage $wd/charts/raft-storage && \
-#    cp -r deploy/helm/cache-storage-controller $wd/charts/raft-storage-controller && \
+git clone https://github.com/atomix/cache-storage-controller build/repos/cache-storage-controller && \
+    git --git-dir=build/repos/cache-storage-controller/.git checkout v0.1.0-beta.1 && \
+    helm package build/repos/cache-storage-controller/deploy/helm --destination .deploy
 
 git clone https://github.com/atomix/cache-storage build/repos/cache-storage && \
-    cd build/repos/cache-storage && \
-    git checkout master && \
-    cp -r deploy/helm/cache-storage $wd/charts/cache-storage && \
-    cp -r deploy/helm/cache-storage-controller $wd/charts/cache-storage-controller && \
-    cd $wd
+    git --git-dir=build/repos/cache-storage/.git checkout v0.1.0-beta.1 && \
+    helm package build/repos/cache-storage/deploy/helm --destination .deploy
+
+#git clone https://github.com/atomix/raft-storage-controller build/repos/raft-storage-controller && \
+#    git --git-dir=build/repos/raft-storage-controller/.git checkout v0.1.0-beta.1 && \
+#    helm package build/repos/raft-storage-controller/deploy/helm --destination .deploy
+
+#git clone https://github.com/atomix/raft-storage build/repos/raft-storage && \
+#    git --git-dir=build/repos/raft-storage/.git checkout v0.1.0-beta.1 && \
+#    helm package build/repos/raft-storage/deploy/helm --destination .deploy
+
+cr upload \
+    --git-base-url https://api.github.com/ \
+    --git-upload-url https://uploads.github.com/ \
+    --owner atomix \
+    --git-repo helm-charts \
+    --charts-repo https://github.com/atomix/helm-charts \
+    --package-path .deploy \
+    --token $CR_TOKEN \
+
+git checkout gh-pages
+
+cr index \
+  --index-path index.yaml \
+  --git-base-url https://api.github.com/ \
+  --git-upload-url https://uploads.github.com/ \
+  --owner atomix \
+  --git-repo helm-charts \
+  --charts-repo https://github.com/atomix/helm-charts \
+  --package-path .deploy \
+  --token $CR_TOKEN \
+
+git commit -a -m "Update index.yaml"
+git push origin gh-pages
+
+git checkout master
