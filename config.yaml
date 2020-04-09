@@ -1,0 +1,7 @@
+owner: atomix
+git-repo: helm-charts
+charts-repo: https://github.com/atomix/helm-charts
+package-path: charts
+token: de09f1f2c74e57ae8884c8ae603df86ad1904c19
+git-base-url: https://api.github.com/
+git-upload-url: https://uploads.github.com/
