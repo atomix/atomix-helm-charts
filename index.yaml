@@ -3,9 +3,9 @@ entries:
   atomix-controller:
   - apiVersion: v2
     appVersion: v0.2.0-beta.1
-    created: "2020-04-09T12:55:46.419553-07:00"
+    created: "2020-04-09T15:29:19.832877-07:00"
     description: Atomix Controller
-    digest: 72c39c8e959374868ed9341a97e6bf4012b85270fa4d16e53b93b57a2eec4287
+    digest: a9a63819432a8cb96135d0388e121826d725769d08f53c08065bbb630c83edff
     home: https://atomix.io
     keywords:
     - atomix
@@ -21,9 +21,9 @@ entries:
   cache-storage:
   - apiVersion: v2
     appVersion: v0.1.0-beta.1
-    created: "2020-04-09T12:55:46.618844-07:00"
+    created: "2020-04-09T15:29:20.093699-07:00"
     description: Cache Storage
-    digest: 08fd618acffabb6a25add45d6cd49f40c1fc18cb88f0de34cab0c1a8cf4fa4e7
+    digest: e4735456b76e5542b38a2f2629343f09e88885838abe7f68f68c2bd7b1c390b9
     home: https://atomix.io
     keywords:
     - atomix
@@ -41,9 +41,9 @@ entries:
   cache-storage-controller:
   - apiVersion: v2
     appVersion: v0.1.0-beta.1
-    created: "2020-04-09T12:55:46.788709-07:00"
+    created: "2020-04-09T15:29:20.299832-07:00"
     description: Cache Storage Controller
-    digest: fc9aec5029a58fb12ce3a048ee8aa64fc4dff1b0823f21356958de9e370887b5
+    digest: 2f6197ac29ae81c7b4494e30ec290b4bf5692bbdb8f343fa3d834b78cf08c885
     home: https://atomix.io
     keywords:
     - atomix
@@ -58,4 +58,4 @@ entries:
     urls:
     - https://github.com/atomix/helm-charts/releases/download/cache-storage-controller-0.1.0/cache-storage-controller-0.1.0.tgz
     version: 0.1.0
-generated: "2020-04-09T12:55:46.14569-07:00"
+generated: "2020-04-09T15:29:19.523942-07:00"
