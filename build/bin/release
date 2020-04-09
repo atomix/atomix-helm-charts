@@ -1,41 +1,36 @@
 #!/bin/bash
 
-rm -rf build/repos
+set -x
 
-mkdir -p build/repos
-mkdir -p charts
+[ "$#" -eq 2 ] || die "2 arguments required, $# provided"
 
-git clone https://github.com/atomix/kubernetes-controller build/repos/kubernetes-controller && \
-    git --git-dir=build/repos/kubernetes-controller/.git checkout v0.2.0-beta.1 && \
-    helm package build/repos/kubernetes-controller/deploy/helm --destination .deploy
+repo=$1
+tag=$2
 
-git clone https://github.com/atomix/cache-storage-controller build/repos/cache-storage-controller && \
-    git --git-dir=build/repos/cache-storage-controller/.git checkout v0.1.0-beta.1 && \
-    helm package build/repos/cache-storage-controller/deploy/helm --destination .deploy
+git checkout master
 
-git clone https://github.com/atomix/cache-storage build/repos/cache-storage && \
-    git --git-dir=build/repos/cache-storage/.git checkout v0.1.0-beta.1 && \
-    helm package build/repos/cache-storage/deploy/helm --destination .deploy
+rm -rf build/$repo
 
-#git clone https://github.com/atomix/raft-storage-controller build/repos/raft-storage-controller && \
-#    git --git-dir=build/repos/raft-storage-controller/.git checkout v0.1.0-beta.1 && \
-#    helm package build/repos/raft-storage-controller/deploy/helm --destination .deploy
+# Clone the git repo and checkout the release tag
+git clone --branch master https://github.com/$repo build/$repo && \
+    git -C build/$repo checkout $tag
 
-#git clone https://github.com/atomix/raft-storage build/repos/raft-storage && \
-#    git --git-dir=build/repos/raft-storage/.git checkout v0.1.0-beta.1 && \
-#    helm package build/repos/raft-storage/deploy/helm --destination .deploy
+# Package the Helm chart
+helm package build/$repo/deploy/helm --destination releases
 
+# Upload the Helm chart package
 cr upload \
     --git-base-url https://api.github.com/ \
     --git-upload-url https://uploads.github.com/ \
     --owner atomix \
     --git-repo helm-charts \
-    --charts-repo https://github.com/atomix/helm-charts \
-    --package-path .deploy \
-    --token $CR_TOKEN \
+    --package-path releases
 
-git checkout gh-pages
+# Commit the releases
+echo "git add releases"
+echo "git commit -a -m \"Release $repo $tag\""
 
+# Update the repository index
 cr index \
   --index-path index.yaml \
   --git-base-url https://api.github.com/ \
@@ -43,10 +38,12 @@ cr index \
   --owner atomix \
   --git-repo helm-charts \
   --charts-repo https://github.com/atomix/helm-charts \
-  --package-path .deploy \
-  --token $CR_TOKEN \
+  --package-path releases
 
-git commit -a -m "Update index.yaml"
-git push origin gh-pages
+# Push the updated index.yaml to GitHub pages
+git add index.yaml && git checkout gh-pages
+
+echo "git commit -a -m \"Update index.yaml\""
+echo "git push origin gh-pages"
 
 git checkout master
