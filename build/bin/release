@@ -1,8 +1,11 @@
 #!/bin/bash
 
-set -x
+if [ "$#" -lt "3" ]; then
+    echo "3 arguments required, $# provided"
+    exit 1
+fi
 
-[ "$#" -eq 2 ] || die "2 arguments required, $# provided"
+set -x
 
 repo=$1
 tag=$2
@@ -15,8 +18,11 @@ rm -rf build/$repo
 git clone --branch master https://github.com/$repo build/$repo && \
     git -C build/$repo checkout $tag
 
-# Package the Helm chart
-helm package build/$repo/deploy/helm --destination releases
+# Package the Helm charts
+for chart in "${@:3}"
+do
+    helm package build/$repo/$chart --destination releases
+done
 
 # Commit the releases
 git add releases
