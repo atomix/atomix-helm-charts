@@ -29,6 +29,7 @@ cr upload \
 # Commit the releases
 git add releases
 git commit -a -m "Release $repo $tag"
+git push origin master
 
 # Update the repository index
 cr index \
