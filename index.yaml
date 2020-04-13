@@ -1,0 +1,95 @@
+apiVersion: v1
+entries:
+  atomix-controller:
+  - apiVersion: v2
+    appVersion: v0.2.0-beta.1
+    created: "2020-04-13T14:16:36.259673-07:00"
+    description: Atomix Controller
+    digest: d781a9fcd13f8e0d771ccf0a42c18d3e6d6de3f0daccb90c902944d14e4fd712
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/atomix-controller-0.2.0/atomix-controller-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-04-13T14:16:36.090903-07:00"
+    description: Atomix Controller
+    digest: 6d9bc0a49a74da7e114ad1e4274d42b47e610913d12077a81748711c14ca2b7d
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.12.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/atomix-controller-0.1.1/atomix-controller-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2020-04-13T14:16:35.906999-07:00"
+    description: Atomix Controller
+    digest: 477fdbbfaca36a74006637f0ebaba1ea82fc630299ba90365ba4853754986881
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.12.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/atomix-controller-0.1.0/atomix-controller-0.1.0.tgz
+    version: 0.1.0
+  cache-database:
+  - apiVersion: v2
+    appVersion: v0.1.0-beta.1
+    created: "2020-04-13T14:16:36.458374-07:00"
+    description: Cache Database
+    digest: ea83f1f7ec71661e894abe9a511a56c7bba20896f403e2bcf5cf5a5d2447d23e
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.12.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: cache-database
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/cache-database-0.1.0/cache-database-0.1.0.tgz
+    version: 0.1.0
+  cache-storage-controller:
+  - apiVersion: v2
+    appVersion: v0.1.0-beta.1
+    created: "2020-04-13T14:16:36.644071-07:00"
+    description: Cache Storage Controller
+    digest: f8a02f0b02a3068b7d74015374d262c41bbbbbe35ded819781b32b366463b0de
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.12.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: cache-storage-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/cache-storage-controller-0.1.0/cache-storage-controller-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-04-13T14:16:35.645991-07:00"
