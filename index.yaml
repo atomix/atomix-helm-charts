@@ -20,6 +20,23 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2020-04-13T14:27:21.362492-07:00"
+    description: Atomix Controller
+    digest: 6b85162edab442afff76e27fab6819b3299833f9121af95dd6e4d23c2c919384
+    home: https://atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.12.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/atomix-controller-0.1.3/atomix-controller-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2020-04-13T14:22:30.258521-07:00"
     description: Atomix Controller
     digest: 8a42cc78b289e22eb38a49207ae4b66fc0176479b062ec55948af9402ef9b31a
