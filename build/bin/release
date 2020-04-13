@@ -10,8 +10,12 @@ set -x
 repo=$1
 tag=$2
 
-git checkout master
+# Copy the current index.yaml
+git checkout gh-pages
+cp index.yaml build/index.yaml
 
+# Switch to the master branch
+git checkout master
 rm -rf build/$repo
 
 # Clone the git repo and checkout the release tag
@@ -47,10 +51,9 @@ cr index \
   --charts-repo https://github.com/atomix/helm-charts \
   --package-path releases
 
-# Push the updated index.yaml to GitHub pages
+# Switch back to the gh-pages branch and commit the updated index.yaml
 git checkout gh-pages
 mv build/index.yaml index.yaml
-
 git commit -a -m "Update index.yaml"
 git push origin gh-pages
 
