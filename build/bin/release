@@ -6,6 +6,8 @@ set -x
 
 repo=$1
 tag=$2
+chart=$3
+version=$4
 
 git checkout master
 
@@ -29,7 +31,7 @@ cr upload \
     --git-upload-url https://uploads.github.com/ \
     --owner atomix \
     --git-repo helm-charts \
-    --package-path releases
+    --package-path releases/$chart-$version.tgz
 
 # Update the repository index
 cr index \
@@ -39,7 +41,7 @@ cr index \
   --owner atomix \
   --git-repo helm-charts \
   --charts-repo https://github.com/atomix/helm-charts \
-  --package-path releases
+  --package-path releases/$chart-$version.tgz
 
 # Push the updated index.yaml to GitHub pages
 git checkout gh-pages
