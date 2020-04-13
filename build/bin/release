@@ -11,13 +11,6 @@ git checkout master
 
 rm -rf build/$repo
 
-for file in ./releases/*.tgz; do
-    name=${file##*/}
-    base=${name%.txt}
-    branch="${base%.*}"
-    git push --delete origin $branch
-done
-
 # Clone the git repo and checkout the release tag
 git clone --branch master https://github.com/$repo build/$repo && \
     git -C build/$repo checkout $tag
