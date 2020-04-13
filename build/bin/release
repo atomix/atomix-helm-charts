@@ -18,6 +18,11 @@ git clone --branch master https://github.com/$repo build/$repo && \
 # Package the Helm chart
 helm package build/$repo/deploy/helm --destination releases
 
+# Commit the releases
+git add releases
+git commit -a -m "Release $repo $tag"
+git push origin master
+
 # Upload the Helm chart package
 cr upload \
     --git-base-url https://api.github.com/ \
@@ -25,11 +30,6 @@ cr upload \
     --owner atomix \
     --git-repo helm-charts \
     --package-path releases
-
-# Commit the releases
-git add releases
-git commit -a -m "Release $repo $tag"
-git push origin master
 
 # Update the repository index
 cr index \
