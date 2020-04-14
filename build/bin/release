@@ -9,10 +9,12 @@ set -x
 
 repo=$1
 tag=$2
+branch=$(git branch --show-current)
 
 # Switch to the master branch
 git checkout master
 rm -rf build/$repo
+rm -r build/releases
 
 # Clone the git repo and checkout the release tag
 git clone --branch master https://github.com/$repo build/$repo && \
@@ -21,36 +23,33 @@ git clone --branch master https://github.com/$repo build/$repo && \
 # Package the Helm charts
 for chart in "${@:3}"
 do
-    helm package build/$repo/$chart --destination releases
+    helm package build/$repo/$chart --destination build/releases
 done
 
-# Commit the releases
-git add releases
-git commit -a -m "Release $repo $tag"
-git push origin master
-
-# Upload the Helm chart package
+# Upload the Helm chart releases
 cr upload \
     --git-base-url https://api.github.com/ \
     --git-upload-url https://uploads.github.com/ \
     --owner atomix \
     --git-repo helm-charts \
-    --package-path releases
+    --package-path build/releases
+
+# Switch to the GitHub Pages branch
+git checkout gh-pages
 
 # Update the repository index
 cr index \
-  --index-path build/index.yaml \
+  --index-path index.yaml \
   --git-base-url https://api.github.com/ \
   --git-upload-url https://uploads.github.com/ \
   --owner atomix \
   --git-repo helm-charts \
   --charts-repo https://charts.atomix.io \
-  --package-path releases
+  --package-path build/releases
 
-# Switch back to the gh-pages branch and commit the updated index.yaml
-git checkout gh-pages
-mv build/index.yaml index.yaml
-git commit -a -m "Update index.yaml"
+# Commit and push the updated index.yaml
+git commit -m "Update index.yaml" index.yaml
 git push origin gh-pages
 
-git checkout master
+# Switch back to the original branch
+git checkout $branch
