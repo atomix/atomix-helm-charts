@@ -32,20 +32,22 @@ cr upload \
     --git-upload-url https://uploads.github.com/ \
     --owner atomix \
     --git-repo helm-charts \
-    --package-path build/releases
+    --package-path build/releases \
+    --token $GITHUB_TOKEN
 
 # Switch to the GitHub Pages branch
 git checkout gh-pages
 
 # Update the repository index
 cr index \
-  --index-path index.yaml \
-  --git-base-url https://api.github.com/ \
-  --git-upload-url https://uploads.github.com/ \
-  --owner atomix \
-  --git-repo helm-charts \
-  --charts-repo https://charts.atomix.io \
-  --package-path build/releases
+    --index-path index.yaml \
+    --git-base-url https://api.github.com/ \
+    --git-upload-url https://uploads.github.com/ \
+    --owner atomix \
+    --git-repo helm-charts \
+    --charts-repo https://charts.atomix.io \
+    --package-path build/releases \
+    --token $GITHUB_TOKEN
 
 # Commit and push the updated index.yaml
 git commit -m "Update index.yaml" index.yaml
