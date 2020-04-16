@@ -146,12 +146,12 @@ entries:
     urls:
     - https://github.com/atomix/helm-charts/releases/download/cache-storage-controller-0.1.0/cache-storage-controller-0.1.0.tgz
     version: 0.1.0
-  raft-storage-controller:
+  raft-database:
   - apiVersion: v2
     appVersion: v0.1.0-beta.1
-    created: "2020-04-15T18:01:06.549541-07:00"
-    description: Raft Storage Controller
-    digest: a259cdf46a8890c1c43013c38627f7cc190a99217359bb256c00333ef4077d82
+    created: "2020-04-15T18:01:22.059476-07:00"
+    description: raft database
+    digest: 17146f745f5e1a4a3bd10239455adbf0042c7984623fc05bdd6037dbd88b140b
     home: https://atomix.io
     keywords:
     - atomix
@@ -161,9 +161,9 @@ entries:
       name: adib
     - email: jordan@opennetworking.org
       name: kuujo
-    name: raft-storage-controller
+    name: raft-database
     type: application
     urls:
-    - https://github.com/atomix/helm-charts/releases/download/raft-storage-controller-0.1.0/raft-storage-controller-0.1.0.tgz
+    - https://github.com/atomix/helm-charts/releases/download/raft-database-0.1.0/raft-database-0.1.0.tgz
     version: 0.1.0
 generated: "2020-04-13T14:22:29.557588-07:00"
