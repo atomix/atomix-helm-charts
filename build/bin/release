@@ -6,6 +6,7 @@ if [ "$#" -lt "3" ]; then
 fi
 
 set -x
+set -e
 
 repo=$1
 tag=$2
