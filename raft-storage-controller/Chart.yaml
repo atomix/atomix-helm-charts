@@ -3,7 +3,7 @@ name: raft-storage-controller
 description: Atomix storage controller for Raft databases
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.1.1
+version: 0.2.0
 appVersion: v0.1.0
 keywords:
   - atomix
