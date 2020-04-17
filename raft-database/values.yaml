@@ -1,0 +1,9 @@
+clusters: 1
+partitions: 1
+replicas: 1
+
+image:
+  repository: atomix/raft-replica
+  tag: v0.1.0
+  pullPolicy: IfNotPresent
+  pullSecrets: []

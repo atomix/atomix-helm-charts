@@ -1,42 +1,36 @@
 #!/bin/bash
 
-if [ "$#" -lt "3" ]; then
-    echo "3 arguments required, $# provided"
+if [ "$#" -lt "1" ]; then
+    echo "must specify chart directory"
     exit 1
 fi
 
 set -x
 set -e
 
-repo=$1
-tag=$2
+chart=$1
+
+rm -r build/release
+
+owner=${GITHUB_USER:-atomix}
+repo=${GITHUB_REPO:-helm-charts}
+remote=${GIT_REMOTE:-origin}
+token=${GITHUB_TOKEN}
 branch=$(git branch --show-current)
 
-# Switch to the master branch
-git checkout master
-rm -rf build/$repo
-rm -r build/releases
+# Package the Helm chart
+helm package $chart --destination build/release
 
-# Clone the git repo and checkout the release tag
-git clone --branch master https://github.com/$repo build/$repo && \
-    git -C build/$repo checkout $tag
-
-# Package the Helm charts
-for chart in "${@:3}"
-do
-    helm package build/$repo/$chart --destination build/releases
-done
-
-# Upload the Helm chart releases
+# Upload the Helm chart release
 cr upload \
     --git-base-url https://api.github.com/ \
     --git-upload-url https://uploads.github.com/ \
-    --owner atomix \
-    --git-repo helm-charts \
-    --package-path build/releases \
-    --token $GITHUB_TOKEN
+    --owner $owner \
+    --git-repo $repo \
+    --package-path build/release \
+    --token $token
 
-# Switch to the GitHub Pages branch
+# Switch to the gh-pages branch
 git checkout gh-pages
 
 # Update the repository index
@@ -44,15 +38,15 @@ cr index \
     --index-path index.yaml \
     --git-base-url https://api.github.com/ \
     --git-upload-url https://uploads.github.com/ \
-    --owner atomix \
-    --git-repo helm-charts \
-    --charts-repo https://charts.atomix.io \
-    --package-path build/releases \
-    --token $GITHUB_TOKEN
+    --owner $owner \
+    --git-repo $repo \
+    --charts-repo https://$owner.github.io/$repo \
+    --package-path build/release \
+    --token $token
 
-# Commit and push the updated index.yaml
-git commit -m "Update index.yaml" index.yaml
-git push origin gh-pages
+# Commit the updated index.yaml
+git add index.yaml
+git commit -m "Add $chart release to index.yaml" index.yaml
+git push $remote gh-pages
 
-# Switch back to the original branch
 git checkout $branch

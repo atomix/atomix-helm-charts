@@ -1,0 +1,13 @@
+apiVersion: v2
+name: kubernetes-controller
+description: Core Kubernetes controller for Atomix
+kubeVersion: ">=1.17.0"
+type: application
+version: 0.2.1
+appVersion: v0.2.0-beta.2
+keywords:
+  - atomix
+home: https://cloud.atomix.io
+maintainers:
+  - name: kuujo
+    email: jordan@opennetworking.org

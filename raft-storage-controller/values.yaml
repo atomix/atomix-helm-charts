@@ -1,0 +1,7 @@
+replicas: 1
+scope: Cluster
+image:
+  repository: atomix/raft-storage-controller
+  tag: v0.1.0
+  pullPolicy: IfNotPresent
+  pullSecrets: []
