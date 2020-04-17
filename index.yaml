@@ -202,6 +202,25 @@ entries:
     version: 0.3.0
   raft-database:
   - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2020-04-17T15:50:47.239772-07:00"
+    description: Chart for configuring a Raft storage class and database
+    digest: dbd18c4d260ef8ecdecf28e831232d8340f31203dd5579d80a745a2dd319cb28
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: raft-database
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/raft-database-0.2.0/raft-database-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: v0.1.0-beta.1
     created: "2020-04-15T18:01:22.059476-07:00"
     description: raft database
@@ -221,25 +240,6 @@ entries:
     - https://github.com/atomix/helm-charts/releases/download/raft-database-0.1.0/raft-database-0.1.0.tgz
     version: 0.1.0
   raft-storage-controller:
-  - apiVersion: v2
-    appVersion: v0.1.0
-    created: "2020-04-17T15:50:37.266884-07:00"
-    description: Atomix storage controller for Raft databases
-    digest: 3e1418fab13e077a4da08e0f135804339175407bc53e3050151a2388afe14474
-    home: https://cloud.atomix.io
-    keywords:
-    - atomix
-    kubeVersion: '>=1.17.0'
-    maintainers:
-    - email: adib@opennetworking.org
-      name: adib
-    - email: jordan@opennetworking.org
-      name: kuujo
-    name: raft-storage-controller
-    type: application
-    urls:
-    - https://github.com/atomix/helm-charts/releases/download/raft-storage-controller-0.2.0/raft-storage-controller-0.2.0.tgz
-    version: 0.2.0
   - apiVersion: v2
     appVersion: v0.1.0-beta.1
     created: "2020-04-16T11:36:08.959483-07:00"
