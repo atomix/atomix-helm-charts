@@ -163,6 +163,24 @@ entries:
     urls:
     - https://github.com/atomix/helm-charts/releases/download/cache-storage-controller-0.1.0/cache-storage-controller-0.1.0.tgz
     version: 0.1.0
+  kubernetes-controller:
+  - apiVersion: v2
+    appVersion: v0.2.0-beta.2
+    created: "2020-04-17T15:49:21.509758-07:00"
+    description: Core Kubernetes controller for Atomix
+    digest: fc772bf0423bcc66475eaee5dcb266eae5b87958930f56fbdd921e880d35164a
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: kubernetes-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/kubernetes-controller-0.3.0/kubernetes-controller-0.3.0.tgz
+    version: 0.3.0
   raft-database:
   - apiVersion: v2
     appVersion: v0.1.0-beta.1
