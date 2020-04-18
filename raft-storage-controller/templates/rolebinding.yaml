@@ -5,7 +5,7 @@ metadata:
   name: {{ .Release.Name }}
 subjects:
   - kind: ServiceAccount
-    name: {{.Release.Name}}
+    name: {{ .Release.Name }}
 roleRef:
   kind: Role
   name: {{ .Release.Name }}

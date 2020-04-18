@@ -36,7 +36,6 @@ rules:
       - '*'
   - apiGroups:
       - cloud.atomix.io
-      - storage.cloud.atomix.io
     resources:
       - '*'
     verbs:

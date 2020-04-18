@@ -25,6 +25,10 @@ spec:
                 name: control
           command:
             - raft-storage-controller
+          {{- if eq (.Values.scope | lower) "namespace" }}
+          args:
+            - {{ .Release.Namespace }}
+          {{- end }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           readinessProbe:
             exec:
