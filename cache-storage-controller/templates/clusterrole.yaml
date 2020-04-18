@@ -1,4 +1,3 @@
-{{- if eq (.Values.scope | lower) "cluster" }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -6,6 +5,7 @@ metadata:
   name: {{ .Release.Name }}
 rules:
   - apiGroups:
+    {{- if eq (.Values.scope | lower) "cluster" }}
       - ""
     resources:
       - pods
@@ -36,9 +36,9 @@ rules:
       - '*'
   - apiGroups:
       - cloud.atomix.io
+    {{- end }}
       - storage.cloud.atomix.io
     resources:
       - '*'
     verbs:
       - '*'
-{{- end }}
