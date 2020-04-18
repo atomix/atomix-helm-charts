@@ -242,6 +242,25 @@ entries:
   raft-storage-controller:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2020-04-17T17:41:12.975785-07:00"
+    description: Atomix storage controller for Raft databases
+    digest: e9319712f0b7bd81c703eec743294543209c0a542dcd2c127106a33dddfe765e
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: raft-storage-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/raft-storage-controller-0.2.1/raft-storage-controller-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2020-04-17T17:24:30.478383-07:00"
     description: Atomix storage controller for Raft databases
     digest: 329c78f3a8a18d7fbb63e3f1077c5df98f74187a43fc457220f55405c0284457
