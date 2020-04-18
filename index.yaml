@@ -146,6 +146,25 @@ entries:
   cache-storage-controller:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2020-04-17T17:43:07.199133-07:00"
+    description: Atomix storage controller for caching databases
+    digest: 19f43be89090f331afccc5d149a068c907b7af310e84fe8001771a9a6db612dd
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: cache-storage-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/cache-storage-controller-0.2.1/cache-storage-controller-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2020-04-17T15:50:15.941027-07:00"
     description: Atomix storage controller for caching databases
     digest: a96b8363f420529b032fea0c578a3a424b7f777e9b1971aa163e45a01c572369
