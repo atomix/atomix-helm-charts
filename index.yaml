@@ -204,6 +204,23 @@ entries:
   kubernetes-controller:
   - apiVersion: v2
     appVersion: v0.2.0-beta.2
+    created: "2020-04-19T23:53:30.2179-07:00"
+    description: Core Kubernetes controller for Atomix
+    digest: 48713b58ed5926c8d64ffa29d967612e51d4b4c7a83551fdecacff570e9a8cc1
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: kubernetes-controller
+    type: application
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/kubernetes-controller-0.3.1/kubernetes-controller-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: v0.2.0-beta.2
     created: "2020-04-17T15:49:21.509758-07:00"
     description: Core Kubernetes controller for Atomix
     digest: fc772bf0423bcc66475eaee5dcb266eae5b87958930f56fbdd921e880d35164a
