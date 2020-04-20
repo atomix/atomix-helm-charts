@@ -24,3 +24,8 @@ spec:
           properties:
             spec:
               type: object
+            status:
+              type: object
+              properties:
+                ready:
+                  type: boolean

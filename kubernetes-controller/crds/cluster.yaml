@@ -49,3 +49,8 @@ spec:
                       type: string
                     name:
                       type: string
+            status:
+              type: object
+              properties:
+                readyPartitions:
+                  type: integer
