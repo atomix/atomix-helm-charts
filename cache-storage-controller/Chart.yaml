@@ -3,7 +3,7 @@ name: cache-storage-controller
 description: Atomix storage controller for caching databases
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.2.2
+version: 0.2.3
 appVersion: v0.1.1
 keywords:
   - atomix
