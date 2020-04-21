@@ -327,6 +327,24 @@ entries:
   raft-database:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2020-04-21T16:40:50.812313-07:00"
+    description: Chart for configuring a Raft storage class and database
+    digest: 6c3c9924bfeb562a46401cfef2cdc1422a6f76e898d23e7c47ebb31c28fd9c20
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: raft-database
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/raft-database-0.3.0/raft-database-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2020-04-20T11:18:49.831254-07:00"
     description: Chart for configuring a Raft storage class and database
     digest: 12ecacc7df4ebca257618e6bfdd6c163667c28e0d4dcfb2077a43eb1b307dee0
