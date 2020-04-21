@@ -1,9 +1,9 @@
 apiVersion: storage.cloud.atomix.io/v1beta1
 kind: RedisStorageClass
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ template "redis-database.fullname" . }}
   labels:
-    app: {{ .Release.Name }}
+    app: {{ template "redis-database.fullname" . }}
 spec:
   proxy:
       image: {{ .Values.proxy.image.repository}}:{{.Values.proxy.image.tag}}

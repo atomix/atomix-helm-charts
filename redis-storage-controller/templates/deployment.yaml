@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}
+  name: {{ template "raft-storage-controller.fullname" . }}
   namespace: {{.Release.Namespace}}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      name: {{.Release.Name}}
+      name: {{ template "raft-storage-controller.fullname" . }}
   template:
     metadata:
       labels:
-        name: {{.Release.Name}}
+        name: {{ template "raft-storage-controller.fullname" . }}
     spec:
-      serviceAccountName: {{.Release.Name}}
+      serviceAccountName: {{ template "raft-storage-controller.fullname" . }}
       containers:
-        - name: {{.Release.Name}}
+        - name: controller
           # Replace this with the built image name
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
@@ -36,7 +36,7 @@ spec:
             failureThreshold: 1
           env:
             - name: CONTROLLER_NAME
-              value: {{.Release.Name}}
+              value: {{ template "raft-storage-controller.fullname" . }}
             - name: CONTROLLER_NAMESPACE
               valueFrom:
                 fieldRef:
