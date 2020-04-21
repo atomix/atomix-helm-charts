@@ -27,5 +27,8 @@ spec:
                   type: string
                 imagePullPolicy:
                   type: string
-
-
+                partitionsPerNode:
+                  type: integer
+                  min: 1
+                  max: 1024
+                  default: 1

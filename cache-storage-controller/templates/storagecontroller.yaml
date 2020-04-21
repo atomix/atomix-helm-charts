@@ -1,7 +1,7 @@
-apiVersion: cloud.atomix.io/v1beta2
+apiVersion: cloud.atomix.io/v1beta3
 kind: StorageController
 metadata:
-  name: cache
+  name: {{ template "cache-storage-controller.fullname" . }}
 spec:
   group: storage.cloud.atomix.io
   version: v1beta1
