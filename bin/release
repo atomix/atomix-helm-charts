@@ -10,24 +10,25 @@ set -e
 
 chart=$1
 
-rm -rf build/release
-
 owner=${GITHUB_USER:-atomix}
 repo=${GITHUB_REPO:-helm-charts}
-remote=${GIT_REMOTE:-origin}
 token=${GITHUB_TOKEN}
-branch=$(git branch --show-current)
+
+rm -rf build/release
+
+# Create a fresh clone of the repository
+git clone --branch master git@github.com:$owner/$repo.git build/release
+
+cd build/release
 
 # Package the Helm chart
-helm package $chart --destination build/release
+helm package $chart --destination package
 
 # Upload the Helm chart release
 cr upload \
-    --git-base-url https://api.github.com/ \
-    --git-upload-url https://uploads.github.com/ \
     --owner $owner \
     --git-repo $repo \
-    --package-path build/release \
+    --package-path package \
     --token $token
 
 # Switch to the gh-pages branch
@@ -36,17 +37,19 @@ git checkout gh-pages
 # Update the repository index
 cr index \
     --index-path index.yaml \
-    --git-base-url https://api.github.com/ \
-    --git-upload-url https://uploads.github.com/ \
     --owner $owner \
     --git-repo $repo \
     --charts-repo https://$owner.github.io/$repo \
-    --package-path build/release \
+    --package-path package \
     --token $token
 
 # Commit the updated index.yaml
 git add index.yaml
 git commit -m "Add $chart release to index.yaml" index.yaml
-git push $remote gh-pages
+git push origin gh-pages
 
-git checkout $branch
+git checkout master
+
+cd ../..
+
+rm -rf build/release
