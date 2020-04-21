@@ -11,7 +11,7 @@ spec:
     plural: storagecontrollers
     singular: storagecontroller
   versions:
-    - name: v1beta2
+    - name: v1beta3
       served: true
       storage: true
       schema:
