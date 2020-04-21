@@ -1,6 +1,6 @@
-clusters: 1
 partitions: 1
 replicas: 1
+partitionsPerCluster: 3
 
 image:
   repository: atomix/raft-storage-node

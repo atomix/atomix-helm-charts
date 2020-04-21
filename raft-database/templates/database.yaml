@@ -1,15 +1,12 @@
-apiVersion: cloud.atomix.io/v1beta2
+apiVersion: cloud.atomix.io/v1beta3
 kind: Database
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ template "raft-database.fullname" . }}
 spec:
-  clusters: {{ .Values.clusters }}
-  template:
-    spec:
-      partitions: {{ .Values.partitions }}
-      storage:
-        group: storage.cloud.atomix.io
-        version: v1beta1
-        kind: RaftStorageClass
-        name: {{ .Release.Name }}
-        namespace: {{  .Release.Namespace }}
+  partitions: {{ .Values.partitions }}
+  storageClass:
+    group: storage.cloud.atomix.io
+    version: v1beta1
+    kind: RaftStorageClass
+    name: {{ template "raft-database.fullname" . }}
+    namespace: {{  .Release.Namespace }}

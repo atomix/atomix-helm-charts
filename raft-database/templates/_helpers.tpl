@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "cache-storage.name" -}}
+{{- define "raft-database.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "cache-storage.fullname" -}}
+{{- define "raft-database.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "cache-storage.chart" -}}
+{{- define "raft-database.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "cache-storage.labels" -}}
-helm.sh/chart: {{ include "cache-storage.chart" . }}
-{{ include "cache-storage.selectorLabels" . }}
+{{- define "raft-database.labels" -}}
+helm.sh/chart: {{ include "raft-database.chart" . }}
+{{ include "raft-database.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,17 +46,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "cache-storage.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "cache-storage.name" . }}
+{{- define "raft-database.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "raft-database.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "cache-storage.serviceAccountName" -}}
+{{- define "raft-database.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "cache-storage.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "raft-database.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
