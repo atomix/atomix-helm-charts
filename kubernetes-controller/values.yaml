@@ -2,6 +2,6 @@ replicas: 1
 scope: Cluster
 image:
   repository: atomix/kubernetes-controller
-  tag: v0.3.0-beta.1
+  tag: v0.3.0-beta.2
   pullPolicy: IfNotPresent
   pullSecrets: []
