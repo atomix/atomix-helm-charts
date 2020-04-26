@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "kubernetes-controller.fullname" . }}
+  labels:
+    name: {{ template "kubernetes-controller.fullname" . }}
+spec:
+  selector:
+    name: {{ template "kubernetes-controller.fullname" . }}
+  ports:
+    - name: control
+      port: 5679

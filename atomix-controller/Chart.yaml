@@ -1,0 +1,13 @@
+apiVersion: v2
+name: atomix-controller
+description: The core Atomix controller implements the Atomix controller API and provides Database and Partition CRDs
+kubeVersion: ">=1.17.0"
+type: application
+version: 0.4.2
+appVersion: v0.3.0-beta.1
+keywords:
+  - atomix
+home: https://cloud.atomix.io
+maintainers:
+  - name: kuujo
+    email: jordan@opennetworking.org
