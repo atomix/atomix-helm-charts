@@ -4,7 +4,7 @@ description: The core Atomix controller implements the Atomix controller API and
 kubeVersion: ">=1.17.0"
 type: application
 version: 0.5.0
-appVersion: v0.4.0-beta.1
+appVersion: v0.4.0
 keywords:
   - atomix
 home: https://cloud.atomix.io
