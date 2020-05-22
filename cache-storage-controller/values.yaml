@@ -2,6 +2,6 @@ replicas: 1
 scope: Cluster
 image:
   repository: atomix/cache-storage-controller
-  tag: v0.2.0
+  tag: v0.3.0
   pullPolicy: IfNotPresent
   pullSecrets: []
