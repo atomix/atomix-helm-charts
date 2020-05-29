@@ -29,11 +29,47 @@ spec:
                   type: string
                 replicas:
                   type: integer
-                  min: 1
-                  max: 9
+                  minmum: 1
+                  maximum: 9
                   default: 1
                 partitionsPerCluster:
                   type: integer
-                  min: 1
-                  max: 1024
+                  minimum: 1
+                  maximum: 1024
                   default: 1
+                volumeClaimTemplates:
+                  type: object
+                  required:
+                    - data
+                  properties:
+                    data:
+                      type: object
+                      required:
+                        - spec
+                      properties:
+                        metadata:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              default: ''
+                        spec:
+                          type: object
+                          properties:
+                            accessModes:
+                              type: array
+                              items:
+                                type: string
+                                default: ''
+                            storageClassName:
+                              type: string
+                              default: ''
+                            resources:
+                              type: object
+                              properties:
+                                requests:
+                                  type: object
+                                  properties:
+                                    storage:
+                                      type: string
+                                      default: ''
