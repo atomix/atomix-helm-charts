@@ -15,7 +15,6 @@ data:
     DOMAIN=`hostname -d`
     SERVICE=${DOMAIN%%.}
     NODES=1
-    HEAP=2G
 
     function print_usage() {
     echo "\
