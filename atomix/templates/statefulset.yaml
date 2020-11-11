@@ -31,6 +31,9 @@ spec:
       labels:
         app: {{ template "fullname" . }}
     spec:
+      {{- if .Values.podSecurityContext }}
+      securityContext: {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
       {{- if .Values.podAntiAffinity.enabled }}
       affinity:
         podAntiAffinity:
@@ -45,7 +48,7 @@ spec:
       {{- end }}
       initContainers:
       - name: configure
-        image: ubuntu:16.04
+        image: "{{ .Values.initContainer.repository }}:{{ .Values.initContainer.tag }}"
         env:
         - name: ATOMIX_NODES
           value: {{ default "1" .Values.replicas | quote }}
@@ -60,6 +63,9 @@ spec:
           mountPath: /config
       containers:
       - name: {{ .Chart.Name }}
+        {{- if .Values.containerSecurityContext }}
+        securityContext: {{- toYaml .Values.containerSecurityContext | nindent 10 }}
+        {{- end }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
@@ -115,7 +121,7 @@ spec:
       - name: init-scripts
         configMap:
           name: {{ template "fullname" . }}-init-scripts
-          defaultMode: 0744
+          defaultMode: 0777
       - name: user-config
         configMap:
           name: {{ template "fullname" . }}-config

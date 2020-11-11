@@ -6,6 +6,10 @@ image:
   pullPolicy: IfNotPresent
   pullSecrets: []
 
+initContainer:
+  repository: ubuntu
+  tag: 16.04
+
 replicas: 3
 logLevel: INFO
 java_opts: -Xmx2G
@@ -55,3 +59,14 @@ resources:
   requests:
     cpu: 0.5
     memory: 512Mi
+
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 2000
+containerSecurityContext:
+  runAsNonRoot: true
+  readOnlyRootFilesystem: false
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
