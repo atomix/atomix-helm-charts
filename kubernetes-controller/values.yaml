@@ -1,7 +1,8 @@
 replicas: 1
 scope: Cluster
+clusterDomain: ""
 image:
   repository: atomix/kubernetes-controller
-  tag: v0.4.1
+  tag: v0.4.3
   pullPolicy: IfNotPresent
   pullSecrets: []
