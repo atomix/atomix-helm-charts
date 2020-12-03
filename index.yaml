@@ -60,6 +60,23 @@ entries:
     version: 0.1.2
   atomix-controller:
   - apiVersion: v2
+    appVersion: v0.4.3
+    created: "2020-12-03T12:01:56.263839-08:00"
+    description: The core Atomix controller implements the Atomix controller API and
+      provides Database and Partition CRDs
+    digest: ab40f6646b3be5221bb256d36fc24ffe2fcda5592f48d8aa2e5d882fccbd7497
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-controller
+    urls:
+    - https://github.com/atomix/helm-charts/releases/download/atomix-controller-0.5.2/atomix-controller-0.5.2.tgz
+    version: 0.5.2
+  - apiVersion: v2
     appVersion: v0.4.1
     created: "2020-06-03T01:36:25.563249-07:00"
     description: The core Atomix controller implements the Atomix controller API and
