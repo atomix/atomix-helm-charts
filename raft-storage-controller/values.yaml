@@ -3,6 +3,9 @@ scope: Cluster
 clusterDomain: ""
 image:
   repository: atomix/raft-storage-controller
-  tag: v0.5.2
+  tag: v0.5.4
   pullPolicy: IfNotPresent
   pullSecrets: []
+defaultNodeImage:
+  repository: atomix/raft-storage-node
+  tag: v0.5.3
