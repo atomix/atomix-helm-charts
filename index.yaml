@@ -3,6 +3,25 @@ entries:
   atomix:
   - apiVersion: v1
     appVersion: 3.1.9
+    created: "2021-05-14T16:02:38.029551028+02:00"
+    description: Configurable Atomix 3.1.9 cluster
+    digest: 5fe2f820a4b50aa71e281835fc13d2962a39e87931a73e948e337beed63e2fb2
+    home: https://atomix.io
+    icon: https://atomix.io/assets/img/atomix-fav.png
+    keywords:
+    - atomix
+    - database
+    - cluster
+    kubeVersion: '>=1.10.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix
+    urls:
+    - https://github.com/pierventre/helm-charts/releases/download/atomix-0.1.6/atomix-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v1
+    appVersion: 3.1.9
     created: "2021-03-26T05:28:23.854673-07:00"
     description: Configurable Atomix 3.1.9 cluster
     digest: ade2c919b3b0e698eee254a35a94aa452efba50671045abff6e6b16d41667799
@@ -891,4 +910,4 @@ entries:
     urls:
     - https://github.com/atomix/helm-charts/releases/download/raft-storage-controller-0.1.0/raft-storage-controller-0.1.0.tgz
     version: 0.1.0
-generated: "2020-04-13T14:22:29.557588-07:00"
+generated: "2021-05-14T16:02:38.029715246+02:00"
