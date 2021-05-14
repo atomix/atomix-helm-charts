@@ -36,6 +36,11 @@ config: |
 ingress:
   enabled: false
 
+# Adds an additional nodeport to allow profiler connection.
+# When false, profiler can still connect through proxy/port-forward
+profiler:
+  exposeNodePort: false
+
 podAntiAffinity:
   enabled: true
 
