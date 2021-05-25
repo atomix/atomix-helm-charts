@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "kubernetes-controller.name" -}}
+{{- define "atomix-controller.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "kubernetes-controller.fullname" -}}
+{{- define "atomix-controller.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,16 +27,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "kubernetes-controller.chart" -}}
+{{- define "atomix-controller.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "kubernetes-controller.labels" -}}
-helm.sh/chart: {{ include "kubernetes-controller.chart" . }}
-{{ include "kubernetes-controller.selectorLabels" . }}
+{{- define "atomix-controller.labels" -}}
+helm.sh/chart: {{ include "atomix-controller.chart" . }}
+{{ include "atomix-controller.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -46,18 +46,28 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "kubernetes-controller.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "kubernetes-controller.name" . }}
+{{- define "atomix-controller.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "atomix-controller.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "kubernetes-controller.serviceAccountName" -}}
+{{- define "atomix-controller.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create -}}
-    {{ default (include "kubernetes-controller.fullname" .) .Values.serviceAccount.name }}
+    {{ default (include "atomix-controller.fullname" .) .Values.serviceAccount.name }}
 {{- else -}}
     {{ default "default" .Values.serviceAccount.name }}
 {{- end -}}
+{{- end -}}
+
+{{/*
+atomix-controller image name
+*/}}
+{{- define "atomix-controller.imagename" -}}
+{{- if .registry -}}
+{{- printf "%s/" .registry -}}
+{{- end -}}
+{{- printf "%s:%s" .repository .tag -}}
 {{- end -}}

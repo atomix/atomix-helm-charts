@@ -1,0 +1,37 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: {{ template "atomix-controller.fullname" . }}
+webhooks:
+- name: injector.broker.atomix.io
+  rules:
+  - operations: ["CREATE"]
+    apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+    scope: Namespaced
+  clientConfig:
+    service:
+      name: {{ template "atomix-controller.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /inject-broker
+  admissionReviewVersions: ["v1beta1"]
+  sideEffects: None
+  failurePolicy: Ignore
+  timeoutSeconds: 10
+- name: injector.driver.atomix.io
+  rules:
+  - operations: ["CREATE"]
+    apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+    scope: Namespaced
+  clientConfig:
+    service:
+      name: {{ template "atomix-controller.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /inject-drivers
+  admissionReviewVersions: ["v1beta1"]
+  sideEffects: None
+  failurePolicy: Ignore
+  timeoutSeconds: 10

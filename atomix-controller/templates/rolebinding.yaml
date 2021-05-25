@@ -2,12 +2,12 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ template "kubernetes-controller.fullname" . }}
+  name: {{ template "atomix-controller.fullname" . }}
 subjects:
-  - kind: ServiceAccount
-    name: {{ template "kubernetes-controller.fullname" . }}
+- kind: ServiceAccount
+  name: {{ template "atomix-controller.fullname" . }}
 roleRef:
   kind: Role
-  name: {{ template "kubernetes-controller.fullname" . }}
+  name: {{ template "atomix-controller.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}

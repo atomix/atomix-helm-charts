@@ -1,8 +1,26 @@
 replicas: 1
+
 scope: Cluster
-clusterDomain: ""
+
 image:
-  repository: atomix/kubernetes-controller
-  tag: v0.4.3
+  registry: ""
+  repository: atomix/atomix-controller
+  tag: v0.5.3
   pullPolicy: IfNotPresent
   pullSecrets: []
+
+init:
+  image:
+    registry: ""
+    repository: atomix/atomix-controller-init-certs
+    tag: v0.5.3
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+
+broker:
+  image:
+    registry: ""
+    repository: atomix/atomix-broker
+    tag: v0.5.3
+    pullPolicy: IfNotPresent
+    pullSecrets: []
