@@ -1,0 +1,11 @@
+apiVersion: atomix.io/v2beta1
+kind: StoragePlugin
+metadata:
+  name: raft.storage.atomix.io
+spec:
+  group: storage.atomix.io
+  kind: MultiRaftProtocol
+  versions:
+  - name: v2beta1
+    driver:
+      image: {{ include "atomix-raft-storage-plugin.imagename" .Values.driver.image | quote }}

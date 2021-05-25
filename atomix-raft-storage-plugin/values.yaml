@@ -1,0 +1,26 @@
+replicas: 1
+scope: Cluster
+clusterDomain: ""
+
+image:
+  registry: ""
+  repository: atomix/atomix-raft-storage-controller
+  tag: v0.6.7
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+driver:
+  image:
+    registry: ""
+    repository: atomix/atomix-raft-storage-driver
+    tag: v0.6.6
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+
+node:
+  image:
+    registry: ""
+    repository: atomix/atomix-raft-storage-node
+    tag: v0.6.6
+    pullPolicy: IfNotPresent
+    pullSecrets: []
