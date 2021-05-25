@@ -11,7 +11,7 @@ set -e
 chart=$1
 
 owner=${GITHUB_USER:-atomix}
-repo=${GITHUB_REPO:-helm-charts}
+repo=${GITHUB_REPO:-atomix-helm-charts}
 token=${GITHUB_TOKEN}
 
 rm -rf build/release
