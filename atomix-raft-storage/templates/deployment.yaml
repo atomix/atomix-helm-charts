@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "atomix-raft-storage-plugin.fullname" . }}
+  name: {{ template "atomix-raft-storage.fullname" . }}-controller
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      name: {{ template "atomix-raft-storage-plugin.fullname" . }}
+      name: {{ template "atomix-raft-storage.fullname" . }}
   template:
     metadata:
       labels:
-        name: {{ template "atomix-raft-storage-plugin.fullname" . }}
+        name: {{ template "atomix-raft-storage.fullname" . }}
     spec:
-      serviceAccountName: {{ template "atomix-raft-storage-plugin.fullname" . }}
+      serviceAccountName: {{ template "atomix-raft-storage.fullname" . }}-controller
       containers:
         - name: atomix-raft-storage-controller
           # Replace this with the built image name
-          image: {{ include "atomix-raft-storage-plugin.imagename" .Values.image | quote }}
+          image: {{ include "atomix-raft-storage.imagename" .Values.image | quote }}
           {{- if eq (.Values.scope | lower) "namespace" }}
           args:
           - {{ .Release.Namespace }}
@@ -33,7 +33,7 @@ spec:
             failureThreshold: 1
           env:
           - name: CONTROLLER_NAME
-            value: {{ template "atomix-raft-storage-plugin.fullname" . }}
+            value: {{ template "atomix-raft-storage.fullname" . }}-controller
           - name: CONTROLLER_NAMESPACE
             valueFrom:
               fieldRef:
@@ -49,4 +49,4 @@ spec:
               fieldRef:
                 fieldPath: metadata.namespace
           - name: DEFAULT_NODE_IMAGE
-            value: {{ include "atomix-raft-storage-plugin.imagename" .Values.node.image | quote }}
+            value: {{ include "atomix-raft-storage.imagename" .Values.node.image | quote }}

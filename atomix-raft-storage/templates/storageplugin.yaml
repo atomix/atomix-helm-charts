@@ -8,4 +8,4 @@ spec:
   versions:
   - name: v2beta1
     driver:
-      image: {{ include "atomix-raft-storage-plugin.imagename" .Values.driver.image | quote }}
+      image: {{ include "atomix-raft-storage.imagename" .Values.driver.image | quote }}

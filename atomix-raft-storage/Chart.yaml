@@ -1,5 +1,5 @@
 apiVersion: v2
-name: atomix-raft-storage-plugin
+name: atomix-raft-storage
 description: Atomix storage plugin for multi-Raft stores
 kubeVersion: ">=1.17.0"
 type: application
