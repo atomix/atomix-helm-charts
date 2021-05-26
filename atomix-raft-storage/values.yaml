@@ -16,11 +16,3 @@ driver:
     tag: v0.6.6
     pullPolicy: IfNotPresent
     pullSecrets: []
-
-node:
-  image:
-    registry: ""
-    repository: atomix/atomix-raft-storage-node
-    tag: v0.6.6
-    pullPolicy: IfNotPresent
-    pullSecrets: []
