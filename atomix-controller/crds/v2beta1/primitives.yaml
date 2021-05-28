@@ -21,16 +21,30 @@ spec:
         - spec
         properties:
           spec:
+            description: |-
+              The primitive specification describes how a primitive is stored and accessed.
             type: object
             required:
             - type
             - store
             properties:
               type:
+                description: |-
+                  The primitive type name.
                 type: string
               store:
+                description: |-
+                  A reference to the Store used to manage the primitive state. This must include the UID of a valid
+                  store.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
+              selector:
+                description: |-
+                  An optional label selector used to limit the scope of the primitive to pods with labels matching
+                  those in the selector. The selector operates similarly to the Service selector.
+                type: object
+                additionalProperties:
+                  type: string
     additionalPrinterColumns:
     - name: Type
       type: string

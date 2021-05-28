@@ -26,6 +26,10 @@ spec:
             - store
             properties:
               store:
+                description: |-
+                  A reference to the Store used to manage the primitive state. A Store 'name' must be
+                  provided. The 'namespace' is optional. If no 'namespace' is specified, the local namespace
+                  will be used.
                 type: object
                 required:
                 - name
@@ -34,6 +38,13 @@ spec:
                     type: string
                   name:
                     type: string
+              selector:
+                description: |-
+                  An optional label selector used to limit the scope of the primitive to pods with labels matching
+                  those in the selector. The selector operates similarly to the Service selector.
+                type: object
+                additionalProperties:
+                  type: string
     additionalPrinterColumns:
     - name: Store
       type: string

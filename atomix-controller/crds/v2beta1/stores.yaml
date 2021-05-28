@@ -23,9 +23,16 @@ spec:
         - spec
         properties:
           spec:
+            description: |-
+              The specification for the store. The spec must include a protocol configuration describing how the
+              store should be implemented.
             type: object
             properties:
               protocol:
+                description: |-
+                  The configuration for the protocol to be used to implement the store. The protocol is a complete
+                  Kubernetes resource configuration, including the 'apiVersion' and 'kind'. The protocol kind must
+                  match a custom resource defined by one of the StoragePlugins.
                 type: object
                 x-kubernetes-embedded-resource: true
                 x-kubernetes-preserve-unknown-fields: true
