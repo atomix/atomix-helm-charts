@@ -48,3 +48,5 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
+          - name: DEFAULT_NODE_V2BETA1_IMAGE
+            value: {{ include "atomix-raft-storage.imagename" .Values.node.image | quote }}

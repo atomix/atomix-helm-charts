@@ -3,8 +3,8 @@ name: atomix-raft-storage
 description: Atomix storage plugin for multi-Raft stores
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.1.1
-appVersion: v0.6.7
+version: 0.1.2
+appVersion: v0.6.9
 keywords:
   - atomix
 home: https://cloud.atomix.io
