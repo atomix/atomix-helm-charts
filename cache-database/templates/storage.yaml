@@ -1,9 +1,0 @@
-apiVersion: storage.cloud.atomix.io/v1beta1
-kind: CacheStorageClass
-metadata:
-  name: {{ template "cache-database.fullname" . }}
-  labels:
-    app: {{ template "cache-database.fullname" . }}
-spec:
-  image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-  imagePullPolicy: {{ .Values.image.pullPolicy }}
