@@ -12,9 +12,25 @@ webhooks:
     scope: Namespaced
   clientConfig:
     service:
-      name: {{ template "atomix-controller.fullname" . }}
-      namespace: {{ .Release.Namespace }}
+      name: atomix-controller
+      namespace: kube-system
       path: /inject-broker
+  admissionReviewVersions: ["v1beta1"]
+  sideEffects: None
+  failurePolicy: Ignore
+  timeoutSeconds: 10
+- name: injector.profile.atomix.io
+  rules:
+  - operations: ["CREATE"]
+    apiGroups: [""]
+    apiVersions: ["v1"]
+    resources: ["pods"]
+    scope: Namespaced
+  clientConfig:
+    service:
+      name: atomix-controller
+      namespace: kube-system
+      path: /inject-profile
   admissionReviewVersions: ["v1beta1"]
   sideEffects: None
   failurePolicy: Ignore
@@ -28,8 +44,8 @@ webhooks:
     scope: Namespaced
   clientConfig:
     service:
-      name: {{ template "atomix-controller.fullname" . }}
-      namespace: {{ .Release.Namespace }}
+      name: atomix-controller
+      namespace: kube-system
       path: /inject-drivers
   admissionReviewVersions: ["v1beta1"]
   sideEffects: None

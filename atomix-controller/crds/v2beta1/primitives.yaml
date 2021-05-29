@@ -38,13 +38,12 @@ spec:
                   store.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              selector:
-                description: |-
-                  An optional label selector used to limit the scope of the primitive to pods with labels matching
-                  those in the selector. The selector operates similarly to the Service selector.
-                type: object
-                additionalProperties:
-                  type: string
+                properties:
+                  config:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
     additionalPrinterColumns:
     - name: Type
       type: string
