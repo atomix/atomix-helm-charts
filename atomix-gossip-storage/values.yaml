@@ -1,0 +1,26 @@
+replicas: 1
+scope: Cluster
+clusterDomain: ""
+
+image:
+  registry: ""
+  repository: atomix/atomix-gossip-storage-controller
+  tag: v0.1.0
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+node:
+  image:
+    registry: ""
+    repository: atomix/atomix-gossip-storage-node
+    tag: v0.1.0
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+
+driver:
+  image:
+    registry: ""
+    repository: atomix/atomix-gossip-storage-driver
+    tag: v0.1.0
+    pullPolicy: IfNotPresent
+    pullSecrets: []

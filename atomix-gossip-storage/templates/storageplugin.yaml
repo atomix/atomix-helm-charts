@@ -1,0 +1,14 @@
+apiVersion: atomix.io/v2beta1
+kind: StoragePlugin
+metadata:
+  name: gossip.storage.atomix.io
+spec:
+  protocol:
+    group: storage.atomix.io
+    kind: GossipProtocol
+  drivers:
+  - version: v2beta1
+    image: {{ include "atomix-gossip-storage.imagename" .Values.driver.image | quote }}
+    config:
+      group: storage.atomix.io
+      kind: GossipConfig
