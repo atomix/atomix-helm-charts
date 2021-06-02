@@ -3,9 +3,9 @@ kind: StoragePlugin
 metadata:
   name: raft.storage.atomix.io
 spec:
-  group: storage.atomix.io
-  kind: MultiRaftProtocol
-  versions:
-  - name: v2beta1
-    driver:
-      image: {{ include "atomix-raft-storage.imagename" .Values.driver.image | quote }}
+  protocol:
+    group: storage.atomix.io
+    kind: MultiRaftProtocol
+  drivers:
+  - version: v2beta1
+    image: {{ include "atomix-raft-storage.imagename" .Values.driver.image | quote }}
