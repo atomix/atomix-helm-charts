@@ -5,7 +5,7 @@ clusterDomain: ""
 image:
   registry: ""
   repository: atomix/atomix-memory-storage-controller
-  tag: v0.6.0
+  tag: v0.7.0
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -13,7 +13,7 @@ node:
   image:
     registry: ""
     repository: atomix/atomix-memory-storage-node
-    tag: v0.6.0
+    tag: v0.7.0
     pullPolicy: IfNotPresent
     pullSecrets: []
 
@@ -21,6 +21,6 @@ driver:
   image:
     registry: ""
     repository: atomix/atomix-memory-storage-driver
-    tag: v0.6.0
+    tag: v0.7.0
     pullPolicy: IfNotPresent
     pullSecrets: []
