@@ -9,3 +9,6 @@ spec:
   drivers:
   - version: v2beta1
     image: {{ include "atomix-raft-storage.imagename" .Values.driver.image | quote }}
+    config:
+      group: storage.atomix.io
+      kind: RaftSessionConfig

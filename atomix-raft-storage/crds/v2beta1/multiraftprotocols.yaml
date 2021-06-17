@@ -67,6 +67,9 @@ spec:
           status:
             type: object
             properties:
+              state:
+                type: string
+                default: NotReady
               revision:
                 type: integer
               replicas:
@@ -109,3 +112,8 @@ spec:
                         type: string
                     ready:
                       type: boolean
+    additionalPrinterColumns:
+    - name: Status
+      type: string
+      description: The protocol state
+      jsonPath: .status.state
