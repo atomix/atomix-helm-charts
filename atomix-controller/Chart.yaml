@@ -3,8 +3,8 @@ name: atomix-controller
 description: The core Atomix controller implements the Atomix controller API and provides Database and Partition CRDs
 kubeVersion: ">=1.17.0"
 type: application
-version: 0.6.5
-appVersion: v0.5.8
+version: 0.6.6
+appVersion: v0.5.9
 keywords:
 - atomix
 home: https://cloud.atomix.io
