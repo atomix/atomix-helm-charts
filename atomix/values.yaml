@@ -64,6 +64,9 @@ resources:
   requests:
     cpu: 0.5
     memory: 512Mi
+  limits:
+    cpu: ~
+    memory: ~
 
 podSecurityContext:
   runAsUser: 1000
