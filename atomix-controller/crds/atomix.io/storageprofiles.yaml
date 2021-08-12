@@ -1,0 +1,62 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: storageprofiles.atomix.io
+spec:
+  group: atomix.io
+  scope: Namespaced
+  names:
+    kind: StorageProfile
+    listKind: StorageProfileList
+    plural: storageprofiles
+    singular: storageprofile
+    shortNames:
+    - profiles
+    - profile
+  versions:
+  - name: v2beta1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            description: |-
+              The primitive specification describes how a primitive is stored and accessed.
+            type: object
+            required:
+            - selector
+            - drivers
+            properties:
+              drivers:
+                description: |-
+                  A list of drivers required by the profile.
+                type: array
+                items:
+                  type: string
+              selector:
+                description: |-
+                  An optional label selector used to limit the scope of the primitive to pods with labels matching
+                  those in the selector. The selector operates similarly to the Service selector.
+                type: object
+                properties:
+                  matchLabels:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  matchExpressions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        operator:
+                          type: string
+                        values:
+                          type: array
+                          items:
+                            type: string

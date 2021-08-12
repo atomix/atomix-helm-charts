@@ -1,0 +1,80 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: raftmembers.storage.atomix.io
+spec:
+  group: storage.atomix.io
+  names:
+    kind: RaftMember
+    listKind: RaftMemberList
+    plural: raftmembers
+    singular: raftmember
+  scope: Namespaced
+  versions:
+  - name: v2beta2
+    served: true
+    storage: true
+    subresources:
+      status: {}
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            type: object
+            required:
+            - podName
+            properties:
+              podName:
+                type: string
+              readOnly:
+                type: boolean
+          status:
+            type: object
+            properties:
+              state:
+                type: string
+                default: NotReady
+              role:
+                type: string
+              leader:
+                type: string
+              term:
+                type: integer
+              index:
+                type: integer
+              lastUpdated:
+                type: string
+                format: date-time
+              lastSnapshotIndex:
+                type: integer
+              lastSnapshotTime:
+                type: string
+                format: date-time
+    additionalPrinterColumns:
+    - name: Role
+      type: string
+      description: The member role
+      jsonPath: .status.role
+    - name: Leader
+      type: string
+      description: The current leader on the member
+      jsonPath: .status.leader
+    - name: Term
+      type: integer
+      description: The current term on the member
+      jsonPath: .status.term
+    - name: Snapshot Index
+      type: integer
+      description: The index at which the member last took a snapshot
+      jsonPath: .status.lastSnapshotIndex
+    - name: Snapshot Time
+      type: string
+      description: The last time the member took a snapshot
+      jsonPath: .status.lastSnapshotTime
+    - name: Status
+      type: string
+      description: The member state
+      jsonPath: .status.state

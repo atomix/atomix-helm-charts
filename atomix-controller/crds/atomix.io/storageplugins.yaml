@@ -1,0 +1,118 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: storageplugins.atomix.io
+spec:
+  group: atomix.io
+  scope: Cluster
+  names:
+    kind: StoragePlugin
+    listKind: StoragePluginList
+    plural: storageplugins
+    singular: storageplugin
+  versions:
+  - name: v2beta1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            description: |-
+              The specification for the storage plugin. The plugin must point to a custom resource definition (CRD)
+              used to implement the storage.
+            type: object
+            properties:
+              protocol:
+                type: object
+                required:
+                - group
+                - kind
+                properties:
+                  group:
+                    description: |-
+                      The API group of the custom resource definition (CRD) used to implement storage. This must
+                      match a group defined as a CRD.
+                    type: string
+                  kind:
+                    description: |-
+                      The API kind of the custom resource definition (CRD) used to implement storage. This must
+                      match a kind defined as a CRD.
+                    type: string
+              drivers:
+                type: array
+                items:
+                  description: |-
+                    A specification for the driver used to access this version of the storage plugin API.
+                    The driver will be injected into pods to manage access to stores running this version of
+                    the plugin API.
+                  type: object
+                  required:
+                  - version
+                  - image
+                  properties:
+                    version:
+                      description: |-
+                        The driver version name.
+                      type: string
+                    image:
+                      description: |-
+                        The driver image to inject into pods to acecss this version of the store.
+                      type: string
+                    config:
+                      type: object
+                      required:
+                      - group
+                      - kind
+                      properties:
+                        group:
+                          description: |-
+                            The API group of the custom resource definition (CRD) used to configure the driver. This
+                            must match a group defined as a CRD.
+                          type: string
+                        kind:
+                          description: |-
+                            The API kind of the custom resource definition (CRD) used to configure the driver. This
+                            must match a kind defined as a CRD.
+                          type: string
+              group:
+                description: |-
+                  The API group of the custom resource definition (CRD) used to implement storage. This must
+                  match a group defined as a CRD.
+                type: string
+              kind:
+                description: |-
+                  The API kind of the custom resource definition (CRD) used to implement storage. This must
+                  match a kind defined as a CRD.
+                type: string
+              versions:
+                description: |-
+                  A list of API versions supported by the storage custom resource definition (CRD). These must
+                  match versions defined by the CRD specification.
+                type: array
+                items:
+                  type: object
+                  required:
+                  - name
+                  - driver
+                  properties:
+                    name:
+                      description: |-
+                        The version name as defined in the CRD specification.
+                      type: string
+                    driver:
+                      description: |-
+                        A specification for the driver used to access this version of the storage plugin API.
+                        The driver will be injected into pods to manage access to stores running this version of
+                        the plugin API.
+                      type: object
+                      required:
+                      - image
+                      properties:
+                        image:
+                          description: |-
+                            The driver image to inject into pods to acecss this version of the store.
+                          type: string

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "atomix-raft-storage.fullname" . }}-controller
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      name: {{ template "atomix-raft-storage.fullname" . }}
+  template:
+    metadata:
+      labels:
+        name: {{ template "atomix-raft-storage.fullname" . }}
+    spec:
+      serviceAccountName: {{ template "atomix-raft-storage.fullname" . }}-controller
+      containers:
+        - name: atomix-raft-storage-controller
+          # Replace this with the built image name
+          image: {{ include "atomix-raft-storage.imagename" .Values.image | quote }}
+          {{- if eq (.Values.scope | lower) "namespace" }}
+          args:
+          - {{ .Release.Namespace }}
+          {{- end }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          readinessProbe:
+            exec:
+              command:
+              - stat
+              - /tmp/atomix-controller-ready
+            initialDelaySeconds: 4
+            periodSeconds: 10
+            failureThreshold: 1
+          env:
+          - name: CONTROLLER_NAME
+            value: {{ template "atomix-raft-storage.fullname" . }}-controller
+          - name: CONTROLLER_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: CLUSTER_DOMAIN
+            value: {{ .Values.clusterDomain }}
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: DEFAULT_NODE_V2BETA1_IMAGE
+            value: {{ include "atomix-raft-storage.imagename" .Values.node.image | quote }}

@@ -1,9 +1,0 @@
-partitions: 1
-replicas: 1
-partitionsPerCluster: 3
-
-image:
-  repository: atomix/raft-storage-node
-  tag: v0.2.0
-  pullPolicy: IfNotPresent
-  pullSecrets: []

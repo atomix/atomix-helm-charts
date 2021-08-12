@@ -1,7 +1,0 @@
-replicas: 1
-scope: Cluster
-image:
-  repository: atomix/cache-storage-controller
-  tag: v0.3.0
-  pullPolicy: IfNotPresent
-  pullSecrets: []

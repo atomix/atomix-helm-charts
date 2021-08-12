@@ -2,7 +2,7 @@ nameOverride: ""
 
 image:
   repository: atomix/atomix
-  tag: 3.1.8
+  tag: 3.1.9
   pullPolicy: IfNotPresent
   pullSecrets: []
 
@@ -39,6 +39,11 @@ config: |
 
 ingress:
   enabled: false
+
+# Adds an additional nodeport to allow profiler connection.
+# When false, profiler can still connect through proxy/port-forward
+profiler:
+  exposeNodePort: false
 
 podAntiAffinity:
   enabled: true

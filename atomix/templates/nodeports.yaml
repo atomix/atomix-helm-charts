@@ -1,0 +1,19 @@
+# Sometimes, it is very hard monitoring or taking the snapshots through the proxy
+{{- if .Values.profiler.exposeNodePort }}
+{{- $root := . -}}
+{{ range $k, $index := until (atoi (quote .Values.replicas) | default 3) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: atomix-profiler-{{ $index }}
+spec:
+  type: NodePort
+  ports:
+    - name: atomix-profiler-{{ $index }}
+      port: 10001
+      nodePort: {{ add $index 31001 }}
+  selector:
+      statefulset.kubernetes.io/pod-name: {{ template "fullname" $ }}-{{ $index }}
+{{ end }}
+{{- end}}

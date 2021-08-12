@@ -1,0 +1,50 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: indexedmaps.primitives.atomix.io
+spec:
+  group: primitives.atomix.io
+  scope: Namespaced
+  names:
+    kind: IndexedMap
+    listKind: IndexedMapList
+    plural: indexedmaps
+    singular: indexedmap
+  versions:
+  - name: v2beta1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            type: object
+            required:
+            - store
+            properties:
+              store:
+                description: |-
+                  A reference to the Store used to manage the primitive state. A Store 'name' must be
+                  provided. The 'namespace' is optional. If no 'namespace' is specified, the local namespace
+                  will be used.
+                type: object
+                required:
+                - name
+                properties:
+                  namespace:
+                    type: string
+                  name:
+                    type: string
+                  config:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+    additionalPrinterColumns:
+    - name: Store
+      type: string
+      description: The primitive store
+      jsonPath: .spec.store.name

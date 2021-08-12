@@ -1,0 +1,15 @@
+apiVersion: v2
+name: atomix-raft-storage
+description: Atomix storage plugin for multi-Raft stores
+kubeVersion: ">=1.17.0"
+type: application
+version: 0.1.8
+appVersion: v0.9.0
+keywords:
+  - atomix
+home: https://cloud.atomix.io
+maintainers:
+  - name: adib
+    email: adib@opennetworking.org
+  - name: kuujo
+    email: jordan@opennetworking.org
