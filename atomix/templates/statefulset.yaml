@@ -67,8 +67,19 @@ spec:
           value: {{ default "-Xmx2G" .Values.java_opts }}
         resources:
           requests:
+            {{- if .Values.resources.requests.memory }}
             memory: {{ .Values.resources.requests.memory }}
+            {{- end }}
+            {{- if .Values.resources.requests.cpu }}
             cpu: {{ .Values.resources.requests.cpu }}
+            {{- end }}
+          limits:
+            {{- if .Values.resources.limits.memory }}
+            memory: {{ .Values.resources.limits.memory }}
+            {{- end }}
+            {{- if .Values.resources.limits.cpu }}
+            cpu: {{ .Values.resources.limits.cpu }}
+            {{- end }}
         ports:
         - name: client
           containerPort: 5678
