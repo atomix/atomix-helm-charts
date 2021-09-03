@@ -416,6 +416,24 @@ entries:
     version: 0.1.0
   atomix-gossip-storage:
   - apiVersion: v2
+    appVersion: v0.1.2
+    created: "2021-09-03T02:02:46.528114-07:00"
+    description: Gossip storage implementation for Atomix
+    digest: d9e0e9cc289899d131fabaf2017c25597697c5a7a95239f42f8cbe90c8db3533
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-gossip-storage
+    urls:
+    - https://github.com/atomix/atomix-helm-charts/releases/download/atomix-gossip-storage-0.1.2/atomix-gossip-storage-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: v0.1.1
     created: "2021-05-29T18:17:42.726359-07:00"
     description: Gossip storage implementation for Atomix
