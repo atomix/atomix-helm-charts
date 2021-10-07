@@ -527,6 +527,24 @@ entries:
     version: 0.1.0
   atomix-raft-storage:
   - apiVersion: v2
+    appVersion: v0.9.4
+    created: "2021-10-07T16:11:41.06284-07:00"
+    description: Atomix storage plugin for multi-Raft stores
+    digest: 5cea7bef5e4da0083859ea35a4fcf23cc7af66bca6e683490feb1900f45a0a3b
+    home: https://cloud.atomix.io
+    keywords:
+    - atomix
+    kubeVersion: '>=1.17.0'
+    maintainers:
+    - email: adib@opennetworking.org
+      name: adib
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix-raft-storage
+    urls:
+    - https://github.com/atomix/atomix-helm-charts/releases/download/atomix-raft-storage-0.1.11/atomix-raft-storage-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
     appVersion: v0.9.3
     created: "2021-10-07T11:22:02.989609-07:00"
     description: Atomix storage plugin for multi-Raft stores
