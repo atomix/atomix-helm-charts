@@ -63,3 +63,6 @@ resources:
   limits:
     cpu: ~
     memory: ~
+
+podsecuritypolicy:
+  enabled: false
