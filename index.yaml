@@ -3,6 +3,25 @@ entries:
   atomix:
   - apiVersion: v1
     appVersion: 3.1.9
+    created: "2021-12-02T14:18:57.124873-08:00"
+    description: Configurable Atomix 3.1.9 cluster
+    digest: 632948e260a24de92e2e63f40db6e9a0698dd18d77097dd8205de5ed5652da14
+    home: https://atomix.io
+    icon: https://atomix.io/assets/img/atomix-fav.png
+    keywords:
+    - atomix
+    - database
+    - cluster
+    kubeVersion: '>=1.10.0'
+    maintainers:
+    - email: jordan@opennetworking.org
+      name: kuujo
+    name: atomix
+    urls:
+    - https://github.com/atomix/atomix-helm-charts/releases/download/atomix-0.1.8/atomix-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v1
+    appVersion: 3.1.9
     created: "2021-09-30T11:43:16.555947-05:00"
     description: Configurable Atomix 3.1.9 cluster
     digest: db6dfca8dba787d23514976952f449f89edc3c6132cd77b058096ba7990f6a0a
