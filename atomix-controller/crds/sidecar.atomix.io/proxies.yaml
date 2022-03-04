@@ -51,6 +51,8 @@ spec:
           status:
             type: object
             properties:
+              containerID:
+                type: string
               ready:
                 type: boolean
     additionalPrinterColumns:
