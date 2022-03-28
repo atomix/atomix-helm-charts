@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 ## Atomix Controller
 
 Provides a [Helm] chart for deploying the [Atomix Controller] on [Kubernetes].
