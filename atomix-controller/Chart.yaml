@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020-present Open Networking Foundation <info@opennetworking.org>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 apiVersion: v2
 name: atomix-controller
 description: The core Atomix controller implements the Atomix controller API and provides Database and Partition CRDs
